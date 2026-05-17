@@ -94,7 +94,7 @@ async def download_media(
 ):
     logger.info(f"Procesando: Tipo={tipo}, Calidad={calidad}p")
     
-    # Parámetros estrictos para evadir bloqueos de bots usando clientes nativos alternativos
+        # Parámetros estrictos para evadir bloqueos en servidores en la nube (Render)
     ydl_opts = {
         'outtmpl': f'{DOWNLOAD_DIR}/%(id)s.%(ext)s',
         'quiet': True,
@@ -102,11 +102,12 @@ async def download_media(
         'nocheckcertificate': True,
         'extractor_args': {
             'youtube': {
-                'player_client': ['android', 'web_embedded'],
+                'player_client': ['tv', 'web_embedded'],
                 'skip': ['webpage', 'configs']
             }
         }
     }
+
 
     # Verifica si FFmpeg está en tu ruta local de Windows C:\\ para usarlo. Si no está (como en la nube), continúa automático.
     if os.path.exists("C:\\ffmpeg\\bin"):
