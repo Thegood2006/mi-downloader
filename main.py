@@ -94,13 +94,14 @@ async def download_media(
 ):
     logger.info(f"Procesando: Tipo={tipo}, Calidad={calidad}p")
     
-               # Parámetros avanzados para saltar bloqueos de bots y restricciones de país en la nube
+                   # Parámetros avanzados con archivo de cookies para saltar bloqueos en la nube
     ydl_opts = {
         'outtmpl': f'{DOWNLOAD_DIR}/%(id)s.%(ext)s',
         'quiet': True,
         'no_warnings': True,
         'nocheckcertificate': True,
-        'geo_bypass_country': 'ES',  # <--- TRUCO: Salta la restricción de país simulando estar en España
+        'cookiefile': 'cookies.txt',  # <--- LE DICE A RENDER QUE USE TUS COOKIES
+        'geo_bypass_country': 'ES',
         'extractor_args': {
             'youtube': {
                 'player_client': ['tv', 'web_embedded'],
@@ -108,6 +109,7 @@ async def download_media(
             }
         }
     }
+
 
 
 
