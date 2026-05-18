@@ -1,10 +1,4 @@
 services:
   - type: web
-    name: mi-downloader-api
-    env: python
-
-    buildCommand: |
-      python -m pip install --upgrade pip
-      pip install -r requirements.txt
-
-    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    name: youtube-music-api
+    env: docker
