@@ -161,28 +161,32 @@ async def download_media(
 
     try:
 
-        ydl_opts = {
-            "outtmpl": f"{DOWNLOAD_DIR}/%(id)s.%(ext)s",
+       ydl_opts = {
+    'outtmpl': f'{DOWNLOAD_DIR}/%(id)s.%(ext)s',
 
-            # Cookies
-            "cookiefile": COOKIE_FILE,
+    'quiet': False,
+    'verbose': True,
 
-            # Mejor compatibilidad
-            "quiet": False,
-            "verbose": True,
+    'nocheckcertificate': True,
 
-            "nocheckcertificate": True,
+    'http_headers': {
+        'User-Agent': (
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+            'AppleWebKit/537.36 (KHTML, like Gecko) '
+            'Chrome/124.0.0.0 Safari/537.36'
+        )
+    },
 
-            "http_headers": {
-                "User-Agent": "Mozilla/5.0"
-            },
+    'extractor_args': {
+        'youtube': {
+            'player_client': ['android', 'web']
+        },
 
-            "extractor_args": {
-                "youtube": {
-                    "player_client": ["android", "web"]
-                }
-            }
+        'generic': {
+            'impersonate': 'chrome'
         }
+    }
+}
 
         # -------- AUDIO -------- #
 
