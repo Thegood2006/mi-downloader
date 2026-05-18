@@ -161,7 +161,8 @@ async def download_media(
 
     try:
 
-       ydl_opts = {
+      ydl_opts = {
+
     'outtmpl': f'{DOWNLOAD_DIR}/%(id)s.%(ext)s',
 
     'quiet': False,
@@ -169,22 +170,17 @@ async def download_media(
 
     'nocheckcertificate': True,
 
-    'http_headers': {
-        'User-Agent': (
-            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
-            'AppleWebKit/537.36 (KHTML, like Gecko) '
-            'Chrome/124.0.0.0 Safari/537.36'
-        )
-    },
-
     'extractor_args': {
         'youtube': {
-            'player_client': ['android', 'web']
-        },
-
-        'generic': {
-            'impersonate': 'chrome'
+            'player_client': ['android']
         }
+    },
+
+    'http_headers': {
+        'User-Agent': (
+            'com.google.android.youtube/19.09.37 '
+            '(Linux; U; Android 11) gzip'
+        )
     }
 }
 
