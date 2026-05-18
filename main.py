@@ -94,20 +94,22 @@ async def download_media(
 ):
     logger.info(f"Procesando: Tipo={tipo}, Calidad={calidad}p")
     
-                      # Parámetros avanzados de evasión en la nube (Sin necesidad de archivo cookies)
-    ydl_opts = {
-        'outtmpl': f'{DOWNLOAD_DIR}/%(id)s.%(ext)s',
-        'quiet': True,
-        'no_warnings': True,
-        'nocheckcertificate': True,
-        'geo_bypass_country': 'ES',
-        'extractor_args': {
-            'youtube': {
-                'player_client': ['ios'],
-                'player_skip': ['webpage', 'configs']
-            }
+                      ydl_opts = {
+    'outtmpl': f'{DOWNLOAD_DIR}/%(id)s.%(ext)s',
+    'quiet': True,
+    'no_warnings': True,
+    'nocheckcertificate': True,
+
+    # Archivo cookies
+    'cookiefile': 'cookies.txt',
+
+    # Mejor compatibilidad
+    'extractor_args': {
+        'youtube': {
+            'player_client': ['android', 'web']
         }
     }
+}
 
 
 
