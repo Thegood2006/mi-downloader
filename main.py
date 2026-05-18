@@ -190,14 +190,13 @@ async def download_media(
 
         # -------- AUDIO -------- #
 
-        if tipo == "mp3":
+       if tipo == "mp3":
+    ydl_opts.update({
+        'format': 'bestaudio[ext=m4a]/bestaudio/best'
+    })
 
-            ydl_opts.update({
-                "format": "bestaudio/best"
-            })
-
-            extension = "m4a"
-            media_type = "audio/mp4"
+    extension = "m4a"
+    media_type = "audio/mp4"
 
         # -------- VIDEO -------- #
 
