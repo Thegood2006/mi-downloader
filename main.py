@@ -23,7 +23,7 @@ app.add_middleware(
 DOWNLOAD_DIR = "/tmp/downloads"
 os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 
-COOKIE_FILE = "www.youtube.com_cookies.txt"
+COOKIE_FILE = os.path.join(os.path.dirname(__file__), "www.youtube.com_cookies.txt")
 
 # ---------------- CLEANUP ---------------- #
 
