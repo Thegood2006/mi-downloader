@@ -109,7 +109,16 @@ async def home():
     """
 
 # ---------------- DOWNLOAD ---------------- #
-
+@app.get("/check")
+async def check_cookies():
+    import glob
+    files = glob.glob("/opt/render/project/src/*")
+    cookie_exists = os.path.exists(COOKIE_FILE)
+    return {
+        "cookie_file": COOKIE_FILE,
+        "exists": cookie_exists,
+        "files_in_src": files
+    }
 @app.get("/download")
 async def download_media(
     url: str = Query(...),
